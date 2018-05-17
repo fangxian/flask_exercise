@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+# from wtforms import StringField, SubmitField
 from wtforms.fields import SubmitField, StringField, PasswordField, FileField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Email, Regexp, ValidationError
 
@@ -16,3 +16,9 @@ class RegisterForm(FlaskForm):
     password = PasswordField(label=u'密码', validators=[DataRequired()])
     verify_password = PasswordField(label=u'确认密码', validators=[DataRequired(), EqualTo('password', message="两次密码不一致！")])
     submit = SubmitField(label=u'注册')
+
+
+class LoginForm(FlaskForm):
+    email = StringField(label=u'邮箱', validators=[DataRequired('输入邮箱'), Email(u'邮箱格式不对')])
+    password = StringField(label=u'密码', validators=[DataRequired()])
+    submit = SubmitField(label=u'登录')
