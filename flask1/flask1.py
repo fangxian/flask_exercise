@@ -8,7 +8,7 @@ from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'register page'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@127.0.0.1:3306/flask1'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@127.0.0.1:8889/flask1'
 db = SQLAlchemy(app)
 bootstrap = Bootstrap(app)
 
