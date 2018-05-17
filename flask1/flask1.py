@@ -1,6 +1,6 @@
 from flask import Flask, flash, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from forms import RegisterForm, LoginForm
+from forms import RegisterForm, LoginForm, EditArticleForm
 from flask_login import login_user
 from datetime import datetime
 import pymysql
@@ -73,12 +73,18 @@ def logout():
 
 @app.route('/article_list')
 def article_list():
-    pass
+    # display all article
+    return render_template('article_list.html')
 
 
 @app.route('/add_article')
 def add_article():
-    pass
+    form = EditArticleForm()
+    if form.validate_on_submit():
+        pass
+
+
+    return render_template('add_article.html', form=form)
 
 
 if __name__ == '__main__':
