@@ -25,6 +25,16 @@ class User(db.Model):
         return 'user table'
 
 
+class Article(db.Model):
+    __tablename__ = 'articles'
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.relationship
+    body = db.Column(db.Text)
+    add_time = db.Column(db.DateTime, default=datetime.utcnow())
+
+    def __repr__(self):
+        return "this is %s" % self.__tablename__
+
 @app.route('/')
 def hello_world():
     return 'Hello World!'

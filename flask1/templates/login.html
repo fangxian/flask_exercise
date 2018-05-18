@@ -26,9 +26,9 @@
                             <label>密码</label>
                             <input type="text" class="form-control" placeholder="请输入密码">
                         </div>
-                        <a href="register.html">没有账号，请先注册</a>
+                        <a href="{{ url_for("register") }}">没有账号，请先注册</a>
                         <br>
-                        <a class="btn btn-primary" href="/art/list/">登陆</a>
+                        <a class="btn btn-primary" href="{{ url_for(article_list) }}">登陆</a>
                     </form>
                 </div>
             </div>

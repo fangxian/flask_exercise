@@ -23,6 +23,9 @@ class LoginForm(FlaskForm):
     password = StringField(label=u'密码', validators=[DataRequired()])
     submit = SubmitField(label=u'登录')
 
+    def validate_email(self, field):
+        email = field.data
+        user = User
 
 class EditArticleForm(FlaskForm):
     title = StringField(label=u'标题', validators=[DataRequired()])
