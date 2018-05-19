@@ -1,4 +1,4 @@
-from flask import blueprints
+from flask import Blueprint
 
-home = blueprints("home", __name__)
+home = Blueprint("home", __name__)
 import app.home.views
