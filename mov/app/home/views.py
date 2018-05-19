@@ -6,6 +6,11 @@ from werkzeug.security import generate_password_hash
 from app import db
 
 
+# 登录装饰器
+def login_req(f):
+    pass
+
+
 @home.route('/')
 def index():
     return render_template('home/welcome.html')
@@ -42,3 +47,33 @@ def login():
         session["user_id"] = user.id
         return redirect(url_for('index'))
     return render_template('home/login.html', form=form)
+
+
+@home.route('/logout')
+@login_req
+def logout():
+    pass
+
+
+@home.route('/add_article', methods=['GET', 'POST'])
+@login_req
+def add_article():
+    pass
+
+
+@home.route('/del_article/<int:id>', methods=['GET', 'POST'])
+@login_req
+def del_article(id):
+    pass
+
+
+@home.route('/edit_article/<int:id>', methods=['GET', 'POST'])
+@login_req
+def edit_article(id):
+    pass
+
+
+@home.route('/article/<int:id>/add_comment', methods=['GET', 'POST'])
+@login_req
+def add_comment(id):
+    pass
