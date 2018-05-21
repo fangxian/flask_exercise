@@ -50,30 +50,25 @@ def login():
 
 
 @home.route('/logout')
-@login_req
 def logout():
     pass
 
 
 @home.route('/add_article', methods=['GET', 'POST'])
-@login_req
 def add_article():
     pass
 
 
 @home.route('/del_article/<int:id>', methods=['GET', 'POST'])
-@login_req
 def del_article(id):
     pass
 
 
 @home.route('/edit_article/<int:id>', methods=['GET', 'POST'])
-@login_req
 def edit_article(id):
     pass
 
 
 @home.route('/article/<int:id>/add_comment', methods=['GET', 'POST'])
-@login_req
 def add_comment(id):
     pass
