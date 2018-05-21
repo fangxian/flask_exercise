@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "home/user.html" %}
+{% block content %}
+    <div class="container" style="margin-top:100px">
+      <form role="form" method="post">
+                    <fieldset>
 
-</body>
-</html>
+                        <div class="form-group">
+                            <label for="input_email"><span class="glyphicon glyphicon-envelope"></span>&nbsp;{{ form.email.label }}</label>
+                            {{ form.email }}
+                        </div>
+                        {% for err in form.email.errors %}
+                        <div class="col-md-12">
+                            <font style="color:red">{{ err }}</font>
+                        </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <label for="input_password"><span class="glyphicon glyphicon-lock"></span>&nbsp;{{ form.pwd.label }}</label>
+                            {{ form.pwd }}
+                        </div>
+                        {% for err in form.pwd.errors %}
+                        <div class="col-md-12">
+                            <font style="color:red">{{ err }}</font>
+                        </div>
+                        {% endfor %}
+                        {{ form.csrf_token }}
+                        {{ form.submit }}
+                    </fieldset>
+                </form>
+    </div>
+{% endblock %}
