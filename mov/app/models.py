@@ -14,7 +14,7 @@ class User(db.Model):
     phone = db.Column(db.String(11), unique=True)
     add_time = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
     uuid = db.Column(db.String(100), unique=True)
-    #userlogs = db.relationship('UserLog', backref='user')  # 外键关联关系， 用user来反向检索到users表
+    userlogs = db.relationship('UserLog', backref='user')  # 外键关联关系， 用user来反向检索到users表
     articles = db.relationship('Article', backref='user')
     comments = db.relationship('Comment', backref='user')
 

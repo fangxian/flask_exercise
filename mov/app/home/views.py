@@ -45,9 +45,13 @@ def login():
             return redirect(url_for('home.login'))
         session["user"] = user.name
         session["user_id"] = user.id
-        return redirect(url_for('index'))
+        return redirect(url_for('article_list'))
     return render_template('home/login.html', form=form)
 
+
+@home.route('/article_list')
+def article_list():
+    pass
 
 @home.route('/logout')
 def logout():
