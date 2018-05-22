@@ -33,15 +33,15 @@ class RegisterForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    account = StringField(label=u'账号', validators=[DataRequired("请输入账号！")], description="账号",
-                          render_kw={"class": "form-control", "placeholder": "请输入账号！"})
+    email = StringField(label=u'邮箱', validators=[DataRequired("请输入邮箱！")], description="邮箱",
+                          render_kw={"class": "form-control", "placeholder": "请输入邮箱！"})
     pwd = PasswordField(label=u'密码', validators=[DataRequired("请输入密码")], description="密码",
                         render_kw={"class": "form-control", "placeholder": "请输入密码！"})
     submit = SubmitField('登陆', render_kw={"class": "btn btn-primary btn-block btn-flat"})
 
     def validate_account(self, field):
-        account = field.data
-        user = User.query.filter_by(email=account).first()
+        email = field.data
+        user = User.query.filter_by(email=email).first()
         if user is None:
             raise ValidationError("账号不存在！")
 

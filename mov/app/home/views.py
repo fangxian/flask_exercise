@@ -36,7 +36,7 @@ def register():
 
 @home.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm
+    form = LoginForm()
     if form.validate_on_submit():
         data = form.data
         user = User.query.filter_by(email=data['account']).first()
@@ -45,9 +45,13 @@ def login():
             return redirect(url_for('home.login'))
         session["user"] = user.name
         session["user_id"] = user.id
-        return redirect(url_for('index'))
+        return redirect(url_for('article_list'))
     return render_template('home/login.html', form=form)
 
+
+@home.route('/article_list')
+def article_list():
+    pass
 
 @home.route('/logout')
 def logout():
