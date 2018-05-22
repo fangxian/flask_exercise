@@ -12,6 +12,7 @@ app.debug = True
 db = SQLAlchemy(app)
 rd = FlaskRedis(app)
 
+
 from app.admin import admin as admin_blueprint
 from app.home import home as home_blueprint
 

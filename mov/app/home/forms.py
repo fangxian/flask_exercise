@@ -50,7 +50,7 @@ class LoginForm(FlaskForm):
 class EditPwdForm(FlaskForm):
     old_pwd = PasswordField(label=u'旧密码', validators=[DataRequired("请输入旧密码！")], description="旧密码",
                             render_kw={"class": "form-control", "placeholder": "请输入旧密码"})
-    newpwd = PasswordField(label=u'新密码', validators=[DataRequired('请输入新密码！')], description='新密码',
+    new_pwd = PasswordField(label=u'新密码', validators=[DataRequired('请输入新密码！')], description='新密码',
                            render_kw={"class": "form-control", "placeholder": "请输入新密码！"})
     submit = SubmitField('编辑', render_kw={"class": "btn btn-primary"})
 
