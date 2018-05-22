@@ -12,7 +12,7 @@ class RegisterForm(FlaskForm):
                         render_kw={"class": "form-control", "placeholder": "请输入邮箱"})
     pwd = PasswordField(label=u'密码', validators=[DataRequired("请输入密码")], description="密码",
                         render_kw={"class": "form-control", "placeholder": "请输入密码！"})
-    re_pwd = PasswordField(label=u'密码', validators=[DataRequired("请输入密码"), EqualTo('pwd', message="密码不一致")],
+    repwd = PasswordField(label=u'密码', validators=[DataRequired("请输入密码"), EqualTo('pwd', message="密码不一致")],
                            description="密码",
                            render_kw={"class": "form-control", "placeholder": "请输入密码！"})
     info = TextAreaField(label='简介', description="简介", render_kw={"class": "form-control", "placeholder": "请输入个人简介"})
