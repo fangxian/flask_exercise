@@ -59,7 +59,9 @@ def login():
 @home.route('/logout')
 @user_login_req
 def logout():
-    pass
+    session.pop("user", None)
+    session.pop("user_id", None)
+    return redirect(url_for("home.index"))
 
 
 @home.route('/edit_pwd', methods=['GET', 'POST'])
