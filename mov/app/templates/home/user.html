@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="{{ url_for('home.index',page=1) }}" class="navbar-brand" style="width:250px;">
-                <img src="{{ url_for('static',filename='base/images/logo.png') }}" style="height:30px;">&nbsp;微电影
+                <img src="{{ url_for('static',filename='base/images/logo.png') }}" style="height:30px;">&nbsp;文章管理系统
             </a>
         </div>
         <!--小屏幕导航按钮和logo-->
@@ -36,7 +36,7 @@
         <div class="navbar-collapse collapse">
             <form class="navbar-form navbar-left" role="search" style="margin-top:18px;">
                 <div class="form-group input-group">
-                    <input type="text" class="form-control" placeholder="请输入电影名！" id="key_movie">
+                    <input type="text" class="form-control" placeholder="请输入要搜索的内容！" id="key_movie">
                     <span class="input-group-btn">
                         <a class="btn btn-default" id="do_search"><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
                     </span>
@@ -44,7 +44,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="curlink" href="{{ url_for('home.index') }}"><span class="glyphicon glyphicon-film"></span>&nbsp;主页</a>
+                    <a class="curlink" href="{{ url_for('home.article_list') }}"><span class="glyphicon glyphicon-film"></span>&nbsp;主页</a>
                 </li>
                 <li>
                     <a class="curlink" href="{{ url_for('home.login') }}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;登录</a>
@@ -74,7 +74,7 @@
 <script src="{{ url_for('static',filename='base/js/jquery.singlePageNav.min.js') }}"></script>
 <script src="{{ url_for('static',filename='base/js/wow.min.js') }}"></script>
 <script src="{{ url_for('static',filename='lazyload/jquery.lazyload.min.js') }}"></script>
-<script src="//cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
+<script src="https://cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
 
   {% block js %}{% endblock %}
   </body>

@@ -116,9 +116,8 @@ def edit_profile():
 
 
 @home.route('/article_list')
-@user_login_req
 def article_list():
-    pass
+    return render_template("/home/art_list.html")
 
 
 @home.route('/add_article', methods=['GET', 'POST'])

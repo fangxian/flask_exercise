@@ -5,8 +5,7 @@ from ..models import User
 
 
 def admin_login_req(f):
-    wraps(f)
-
+    @wraps(f)
     def decorated_function(*args, **kwargs):
         if "admin" not in session:
             return redirect(url_for("admin.login"))
