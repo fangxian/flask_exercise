@@ -1,7 +1,7 @@
-from .forms import RegisterForm, LoginForm, EditProfileForm, EditPwdForm
+from .forms import RegisterForm, LoginForm, EditProfileForm, EditPwdForm, ArticleForm
 from flask import render_template, redirect, url_for, flash, session, request
 from . import home
-from ..models import User
+from ..models import User, Article
 from werkzeug.security import generate_password_hash
 from app import db
 from functools import wraps
@@ -90,7 +90,7 @@ def edit_pwd():
 def edit_profile():
     form = EditProfileForm()
     user = User.query.filter_by(name=session['user']).first()
-    if request.method == 'GRT':
+    if request.method == 'GET':
         form.new_name.data = user.name
         form.new_phone.data = user.phone
         form.new_info.data = user.info
@@ -116,14 +116,27 @@ def edit_profile():
 
 
 @home.route('/article_list')
+# @user_login_req
 def article_list():
-    return render_template("/home/art_list.html")
+    return render_template("home/art_list.html")
 
 
 @home.route('/add_article', methods=['GET', 'POST'])
-@user_login_req
+# @user_login_req
 def add_article():
-    pass
+    form = ArticleForm()
+    if form.validate_on_submit():
+        data = form.data
+        article = Article(
+            title=data['title'],
+            user_id=session['user_id'],
+            content=data['body'],
+            url=data['icon']
+        )
+        db.session.add(article)
+        db.session.commit()
+        return redirect(url_for('home.article_list'))
+    return render_template("home/add_article.html", form=form)
 
 
 @home.route('/del_article/<int:id>', methods=['GET', 'POST'])

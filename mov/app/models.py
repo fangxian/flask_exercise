@@ -16,7 +16,7 @@ class User(db.Model):
     add_time = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
     uuid = db.Column(db.String(100), unique=True)
     #userlogs = db.relationship('UserLog', backref='user')  # 外键关联关系， 用user来反向检索到users表
-    #articles = db.relationship('Article', backref='user')
+    articles = db.relationship('Article', backref='user')
     #comments = db.relationship('Comment', backref='user')
     def __repr__(self):
         return "<User %r>" % self.name
@@ -36,7 +36,7 @@ class Role(db.Model):
 class Article(db.Model):
     __tablename__ = 'articles'
     id = db.Column(db.Integer, primary_key=True)
-    #user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     url = db.Column(db.String(255), unique=True)
     title = db.Column(db.String(255), unique=True)
     content = db.Column(db.Text)

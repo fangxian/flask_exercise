@@ -4,13 +4,13 @@
     <div class="row">
         <div class="col-md-3">
             <div class="list-group">
-                <a href="/art/add" class="list-group-item list-group-item-action">发布文章</a>
-                <a href="/art/list" class="list-group-item list-group-item-action">文章列表</a>
+                <a href="{{ url_for('home.add_article')}}" class="list-group-item list-group-item-action">发布文章</a>
+                <a href="{{ url_for('home.article_list') }}" class="list-group-item list-group-item-action active">文章列表</a>
             </div>
         </div>
         <div class="col-md-9">
             <div class="card">
-                <div class="card-header">文章列表</div>
+                <div class="card-header bg-primary"><h3>文章列表</h3></div>
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>

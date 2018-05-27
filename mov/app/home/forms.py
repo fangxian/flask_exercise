@@ -13,8 +13,8 @@ class RegisterForm(FlaskForm):
     pwd = PasswordField(label=u'密码', validators=[DataRequired("请输入密码")], description="密码",
                         render_kw={"class": "form-control", "placeholder": "请输入密码！"})
     repwd = PasswordField(label=u'密码', validators=[DataRequired("请输入密码"), EqualTo('pwd', message="密码不一致")],
-                           description="密码",
-                           render_kw={"class": "form-control", "placeholder": "请输入密码！"})
+                          description="密码",
+                          render_kw={"class": "form-control", "placeholder": "请输入密码！"})
     info = TextAreaField(label='简介', description="简介", render_kw={"class": "form-control", "placeholder": "请输入个人简介"})
     submit = SubmitField('注册', render_kw={"class": "btn btn-primary"})
 
@@ -34,7 +34,7 @@ class RegisterForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     email = StringField(label=u'邮箱', validators=[DataRequired("请输入邮箱！")], description="邮箱",
-                          render_kw={"class": "form-control", "placeholder": "请输入邮箱！"})
+                        render_kw={"class": "form-control", "placeholder": "请输入邮箱！"})
     pwd = PasswordField(label=u'密码', validators=[DataRequired("请输入密码")], description="密码",
                         render_kw={"class": "form-control", "placeholder": "请输入密码！"})
     submit = SubmitField('登陆', render_kw={"class": "btn btn-primary btn-block btn-flat"})
@@ -51,7 +51,7 @@ class EditPwdForm(FlaskForm):
     old_pwd = PasswordField(label=u'旧密码', validators=[DataRequired("请输入旧密码！")], description="旧密码",
                             render_kw={"class": "form-control", "placeholder": "请输入旧密码"})
     new_pwd = PasswordField(label=u'新密码', validators=[DataRequired('请输入新密码！')], description='新密码',
-                           render_kw={"class": "form-control", "placeholder": "请输入新密码！"})
+                            render_kw={"class": "form-control", "placeholder": "请输入新密码！"})
     submit = SubmitField('编辑', render_kw={"class": "btn btn-primary"})
 
 
@@ -62,3 +62,18 @@ class EditProfileForm(FlaskForm):
     new_name = StringField(label=u'昵称', description='新昵称', render_kw={"class": "form-control", "placeholder": "新昵称"})
     new_icon = FileField(label=u'头像', description='新头像')
     submit = SubmitField('编辑', render_kw={"class": "btn btn-primary"})
+
+
+class ArticleForm(FlaskForm):
+    title = StringField(label=u"标题", description='文章标题', render_kw={"class": "form-control", "placeholder": "请输入文章标题"})
+    cate = SelectField(label=u"分类", description="文章分类", validators=[DataRequired("请选择分类！")],
+                       choices=[('0', '科技'), ('1', '搞笑'), ('2', '新闻')], render_kw={"class": "form-control"})
+    icon = StringField(label=u"logo", description="封面", render_kw={"class": "form-control-file"})
+    body = TextAreaField(label=u"内容", description="文章内容", render_kw={"style": "height:300px", "id": "content"})
+    submit = SubmitField(u'发布文章', render_kw={"class":"btn btn-primary"})
+
+class EditArticleForm(FlaskForm):
+    title = StringField(label=u"标题", description='文章标题', render_kw={"class": "form-control", "placeholder": "请输入文章标题"})
+    cate = SelectField(label=u"分类", description="文章分类", render_kw={"class": "form-control"})
+    icon = FileField(label=u"logo", description="封面", render_kw={"class": "form-control", "placeholder": "上传封面"})
+    body = TextAreaField(label=u"内容", description="文章内容", render_kw={"class": "form-control", "placeholder": "请输入内容"})
