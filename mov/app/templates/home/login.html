@@ -37,6 +37,7 @@
                         </div>
                         {% endfor %}
                         {{ form.csrf_token }}
+                        <a href="{{url_for('home.register')}}">没有账号，前往注册！</a><br>
                         {{ form.submit }}
                     </fieldset>
                 </form>

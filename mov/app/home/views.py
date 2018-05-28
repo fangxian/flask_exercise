@@ -1,10 +1,14 @@
 from .forms import RegisterForm, LoginForm, EditProfileForm, EditPwdForm, ArticleForm
-from flask import render_template, redirect, url_for, flash, session, request
+from flask import render_template, redirect, url_for, flash, session, request, current_app
 from . import home
 from ..models import User, Article
 from werkzeug.security import generate_password_hash
 from app import db
 from functools import wraps
+from werkzeug.utils import secure_filename
+import os
+import datetime
+import uuid
 
 
 # 登录装饰器
@@ -121,20 +125,33 @@ def article_list():
     return render_template("home/art_list.html")
 
 
+def change_file_name(name):
+    info = os.path.splitest(name)
+    name = datetime.datatime.now().strftime('%Y%m%d%H%M%S') + str(uuid.uuid4().hex) + info[-1]
+    return name
+
+
 @home.route('/add_article', methods=['GET', 'POST'])
 # @user_login_req
 def add_article():
     form = ArticleForm()
     if form.validate_on_submit():
         data = form.data
+        file = secure_filename(form.icon.data.filename)
+        icon = change_file_name(file)
+        if not os.path.exists(current_app.config['UP']):
+            os.makedirs(current_app.config['UP'])
+        form.icon.data.save(current_app.config['UP'] + '/' + icon)
         article = Article(
             title=data['title'],
+            cate=data['cate'],
             user_id=session['user_id'],
             content=data['body'],
-            url=data['icon']
+            icon=data['icon']
         )
         db.session.add(article)
         db.session.commit()
+        flash("发布成功", "ok")
         return redirect(url_for('home.article_list'))
     return render_template("home/add_article.html", form=form)
 

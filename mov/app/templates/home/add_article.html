@@ -10,36 +10,46 @@
             </div>
         </div>
         <div class="col-md-9">
-            <form role="form" method="post">
+            <form role="form" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <div class="form-group">
 
                         {{ form.title }}
+                        {% for v in form.title.errors %}
+                        <p style="color: red;">{{ v }}</p>
+                        {% endfor %}
                     </div>
 
                     <div class="form-group">
 
                         {{ form.cate }}
+                        {% for v in form.cate.errors %}
+                        <p style="color: red;">{{ v }}</p>
+                        {% endfor %}
                     </div>
 
                     <div class="form-group">
-                        <label for="input_icon"><span class="glyphicon glyphicon-lock"></span>&nbsp;{{ form.icon.label
-                            }}</label>
+                        <label>{{form.icon.label}} </label>
                         {{ form.icon }}
-                        <input type="file" class="form-control-file">
                         <img data-src="holder.js/300*160" style="margin-top: 6px;">
                         <a class="btn btn-primary" style="margin-top: 6px;">上传封面</a>
-
+                        {% for v in form.icon.errors %}
+                        <p style="color: red;">{{ v }}</p>
+                        {% endfor %}
                     </div>
 
                     <div class="form-group">
                         <label>{{ form.body.label }}</label>
                         {{ form.body }}
+                        {% for v in form.body.errors %}
+                        <p style="color: red;">{{ v }}</p>
+                        {% endfor %}
                     </div>
 
 
-                    {{ form.csrf_token }}
                     {{ form.submit }}
+                    {{ form.csrf_token }}
+
                 </fieldset>
             </form>
 

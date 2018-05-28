@@ -53,6 +53,7 @@
                         </div>
                         {% endfor %}
                         {{ form.csrf_token }}
+                        <a href="{{ url_for('home.login')}}">已有账号，前去登陆</a><br>
                         {{ form.submit }}
                     </fieldset>
                 </form>

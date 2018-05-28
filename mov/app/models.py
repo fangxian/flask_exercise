@@ -39,6 +39,8 @@ class Article(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     url = db.Column(db.String(255), unique=True)
     title = db.Column(db.String(255), unique=True)
+    cate = db.Column(db.Integer, nullable=False)
+    icon = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text)
     add_time = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
     #comments = db.relationship("Comment", backref='article')
