@@ -69,7 +69,7 @@ class ArticleForm(FlaskForm):
     cate = SelectField(label=u"分类", description="文章分类", validators=[DataRequired("请选择分类！")],
                        choices=[('0', '科技'), ('1', '搞笑'), ('2', '新闻')], render_kw={"class": "form-control"})
     icon = FileField(label=u"logo", description="封面", render_kw={"class": "form-control-file"})
-    body = TextAreaField(label=u"内容", description="文章内容", render_kw={"style": "height:300px", "id": "content"})
+    body = TextAreaField(label=u"内容", description="文章内容", render_kw={"id":"editor", "style":"height: 300px"})
     submit = SubmitField(u'发布文章', render_kw={"class":"btn btn-primary"})
 
 class EditArticleForm(FlaskForm):

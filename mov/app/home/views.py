@@ -131,6 +131,7 @@ def change_file_name(name):
     return name
 
 
+#上传logo可以取消掉，主要学习下怎么上传文件
 @home.route('/add_article', methods=['GET', 'POST'])
 # @user_login_req
 def add_article():
