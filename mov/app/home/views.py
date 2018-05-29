@@ -24,7 +24,7 @@ def user_login_req(f):
 
 @home.route('/')
 def index():
-    return render_template('home/user.html')
+    return render_template('home/welcome.html')
 
 
 @home.route('/register', methods=['GET', 'POST'])
